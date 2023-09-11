@@ -1,4 +1,5 @@
 local M = {}
+local highlights = require "custom.highlights"
 
 M.options = {
   nvchad_branch = "v2.0",
@@ -8,11 +9,11 @@ M.ui = {
   ------------------------------- base46 -------------------------------------
   -- hl = highlights
   hl_add = {},
-  hl_override = {},
+  hl_override = highlights.override,
   changed_themes = {},
-  theme_toggle = { "catppuccin", "one_light" },
-  theme = "catppuccin", -- default theme
-  transparency = false,
+  theme_toggle = { "kanagawa", "one_light" },
+  theme = "kanagawa", -- default theme
+  transparency = true,
   lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
   -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations

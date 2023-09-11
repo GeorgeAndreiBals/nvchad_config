@@ -8,6 +8,18 @@ local sources = {
 
   -- cpp
   b.formatting.clang_format,
+
+  -- python
+  b.formatting.black,
+  b.formatting.isort,
+  b.diagnostics.ruff,
+
+  -- bash
+  b.diagnostics.shellcheck,
+  b.formatting.shfmt,
+
+  -- yaml
+  b.formatting.prettierd,
 }
 
 null_ls.setup {

@@ -9,4 +9,17 @@ M.general = {
   },
 }
 
+M.lazy = {
+  n = {
+    ["<leader>pl"] = { "<cmd>Lazy<cr>", "Open Lazy" },
+    ["<leader>pm"] = { "<cmd>Mason<cr>", "Open Mason" },
+  },
+}
+
+M.git = {
+  n = {
+    -- ["<leader>gg"] = { "<cmd>LazyGit<cr>", "Open LazyGit" },
+  },
+}
+
 return M

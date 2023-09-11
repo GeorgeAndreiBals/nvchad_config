@@ -9,6 +9,10 @@ M.treesitter = {
     "markdown_inline",
     "python",
     "bash",
+    "json",
+    "jsonc",
+    "yaml",
+    "groovy",
   },
   indent = {
     enable = true,
@@ -26,7 +30,21 @@ M.mason = {
     "clang-format",
 
     -- python
+    "black",
+    "ruff",
+    "pyright",
+    "isort",
+
     -- bash
+    "bash-language-server",
+    "shfmt",
+    "shellcheck",
+
+    -- config files
+    "json-lsp",
+    "yaml-language-server",
+    "prettierd",
+
   },
 }
 

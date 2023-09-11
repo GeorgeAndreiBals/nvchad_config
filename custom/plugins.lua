@@ -7,7 +7,7 @@ local plugins = {
     "kdheepak/lazygit.nvim",
     -- optional for floating window border decoration
     keys = {
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
