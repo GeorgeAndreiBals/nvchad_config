@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = {"lua_ls", "clangd"}
+local servers = { "lua_ls", "clangd", "pyright", "bashls", "jsonls", "yamlls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,5 +13,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- 
--- lspconfig.pyright.setup { blabla}
+lspconfig.bashls.setup = {
+  filetypes = { "zsh", "bash", "sh" },
+}
+
+lspconfig.jsonls.setup {
+  format = true,
+}
+
+lspconfig.yamlls.setup = {
+  settings = {
+    yaml = {
+      schemaStore = {
+        url = "https://www.schemastore.org/api/json/catalog.json",
+        enable = true,
+      },
+    },
+  },
+}
