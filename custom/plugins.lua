@@ -2,6 +2,55 @@ local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
 local plugins = {
+	{ "folke/neodev.nvim", opts = {} },
+
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						search = {
+							mode = function(str)
+								return "\\<" .. str
+							end,
+						},
+					})
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Treesitter Search",
+			},
+		},
+	},
+
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -51,56 +100,32 @@ local plugins = {
 				desc = "Redirect Cmdline",
 			},
 			{
-				"<leader>snl",
+				"<leader>nl",
 				function()
 					require("noice").cmd("last")
 				end,
 				desc = "Noice Last Message",
 			},
 			{
-				"<leader>snh",
+				"<leader>nh",
 				function()
 					require("noice").cmd("history")
 				end,
 				desc = "Noice History",
 			},
 			{
-				"<leader>sna",
+				"<leader>na",
 				function()
 					require("noice").cmd("all")
 				end,
 				desc = "Noice All",
 			},
 			{
-				"<leader>snd",
+				"<leader>nd",
 				function()
 					require("noice").cmd("dismiss")
 				end,
 				desc = "Dismiss All",
-			},
-			{
-				"<c-f>",
-				function()
-					if not require("noice.lsp").scroll(4) then
-						return "<c-f>"
-					end
-				end,
-				silent = true,
-				expr = true,
-				desc = "Scroll forward",
-				mode = { "i", "n", "s" },
-			},
-			{
-				"<c-b>",
-				function()
-					if not require("noice.lsp").scroll(-4) then
-						return "<c-b>"
-					end
-				end,
-				silent = true,
-				expr = true,
-				desc = "Scroll backward",
-				mode = { "i", "n", "s" },
 			},
 		},
 	},
@@ -108,7 +133,6 @@ local plugins = {
 	{
 		"echasnovski/mini.animate",
 		event = "VeryLazy",
-		version = false,
 		opts = function()
 			-- don't use animate when scrolling with the mouse
 			local mouse_scrolled = false
@@ -168,6 +192,7 @@ local plugins = {
 			},
 		},
 		config = function()
+			require("neodev")
 			require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
 		end, -- Override to setup mason-lspconfig
